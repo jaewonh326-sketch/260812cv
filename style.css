@@ -1304,3 +1304,7 @@ footer {
     }
 
 }
+.nav-links a.active {
+    color: var(--accent-color);
+    text-shadow: 0 0 10px var(--accent-glow);
+}
