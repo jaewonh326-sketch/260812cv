@@ -1,149 +1,81 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-    /* =========================
-       SCROLL ANIMATION
-    ========================== */
+    /* 헤더 스크롤 효과 */
+    const header = document.querySelector(".header");
 
-    const animatedElements = document.querySelectorAll(
-        ".section, .timeline-card, .skill-card, .education-card"
+    window.addEventListener("scroll", () => {
+        if (window.scrollY > 30) {
+            header.classList.add("scrolled");
+        } else {
+            header.classList.remove("scrolled");
+        }
+    });
+
+
+    /* 스크롤 등장 효과 */
+    const elements = document.querySelectorAll(
+        ".section-header, .about-main, .about-side, " +
+        ".timeline-item, .education-item, .skill-card, .contact-box"
     );
 
+    elements.forEach(element => {
+        element.classList.add("reveal");
+    });
+
+
     const observer = new IntersectionObserver(
-        (entries) => {
-            entries.forEach((entry) => {
+        (entries, observer) => {
+
+            entries.forEach(entry => {
 
                 if (entry.isIntersecting) {
                     entry.target.classList.add("visible");
                     observer.unobserve(entry.target);
+
                 }
 
             });
+
         },
         {
             threshold: 0.12
         }
     );
 
-    animatedElements.forEach((element) => {
+
+    elements.forEach(element => {
         observer.observe(element);
     });
 
 
-    /* =========================
-       TOP BUTTON
-    ========================== */
-
-    const topButton = document.getElementById("topButton");
+    /* 네비게이션 현재 위치 표시 */
+    const sections = document.querySelectorAll("main section[id]");
+    const navLinks = document.querySelectorAll("nav a");
 
     window.addEventListener("scroll", () => {
 
-        if (window.scrollY > 500) {
-            topButton.classList.add("show");
-        } else {
-            topButton.classList.remove("show");
-        }
+        let current = "";
 
-    });
+        sections.forEach(section => {
 
+            const sectionTop = section.offsetTop - 150;
 
-    topButton.addEventListener("click", () => {
-
-        window.scrollTo({
-            top: 0,
-            behavior: "smooth"
-        });
-
-    });
-
-
-    /* =========================
-       NAVIGATION
-    ========================== */
-
-    const navLinks = document.querySelectorAll(".header nav a");
-
-    navLinks.forEach((link) => {
-
-        link.addEventListener("click", (event) => {
-
-            const targetId = link.getAttribute("href");
-
-            if (!targetId || !targetId.startsWith("#")) {
-                return;
+            if (window.scrollY >= sectionTop) {
+                current = section.getAttribute("id");
             }
 
-            const target = document.querySelector(targetId);
+        });
 
-            if (!target) {
-                return;
+        navLinks.forEach(link => {
+
+            link.style.fontWeight = "400";
+
+            if (link.getAttribute("href") === "#" + current) {
+                link.style.fontWeight = "600";
             }
-
-            event.preventDefault();
-
-            target.scrollIntoView({
-                behavior: "smooth",
-                block: "start"
-            });
 
         });
 
     });
-
-
-    /* =========================
-       HERO BUTTON
-    ========================== */
-
-    const mainButton = document.querySelector(".main-button");
-
-    if (mainButton) {
-
-        mainButton.addEventListener("click", (event) => {
-
-            const target = document.querySelector("#about");
-
-            if (!target) {
-                return;
-            }
-
-            event.preventDefault();
-
-            target.scrollIntoView({
-                behavior: "smooth"
-            });
-
-        });
-
-    }
-
-
-    /* =========================
-       SKILL CARD HOVER
-    ========================== */
-
-    const skillCards = document.querySelectorAll(".skill-card");
-
-    skillCards.forEach((card) => {
-
-        card.addEventListener("mouseenter", () => {
-            card.style.zIndex = "5";
-        });
-
-        card.addEventListener("mouseleave", () => {
-            card.style.zIndex = "1";
-        });
-
-    });
-
-
-    /* =========================
-       YEAR
-    ========================== */
-
-    const yearElement = document.querySelector("footer p:last-child");
-
-    if (yearElement) {
-        yearElement.textContent = `© ${new Date().getFullYear()} 한재원`;
-    }
 
 });
