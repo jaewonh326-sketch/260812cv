@@ -1,63 +1,274 @@
-document.addEventListener('DOMContentLoaded', () => {
-    // Intersection Observer for scroll animations
-    const observerOptions = {
-        root: null,
-        rootMargin: '0px',
-        threshold: 0.15
-    };
+document.addEventListener("DOMContentLoaded", () => {
 
-    const observer = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('show');
-                // Optional: unobserve if you only want the animation to happen once
-                // observer.unobserve(entry.target);
-            } else {
-                // Remove the class when not intersecting if you want it to animate every time
-                entry.target.classList.remove('show');
-            }
-        });
-    }, observerOptions);
+    /* =========================
+       ELEMENTS
+    ========================== */
 
-    const hiddenElements = document.querySelectorAll('.hidden');
-    hiddenElements.forEach(el => observer.observe(el));
+    const navbar = document.querySelector(".navbar");
+    const sections = document.querySelectorAll("section[id]");
+    const navLinks = document.querySelectorAll(".nav-links a");
+    const hiddenElements = document.querySelectorAll(".hidden");
 
-    // Navbar scroll effect
-    const navbar = document.querySelector('.navbar');
-    
-    window.addEventListener('scroll', () => {
+
+    /* =========================
+       NAVBAR SCROLL EFFECT
+    ========================== */
+
+    function updateNavbar() {
+
         if (window.scrollY > 50) {
-            navbar.classList.add('scrolled');
+            navbar.classList.add("scrolled");
         } else {
-            navbar.classList.remove('scrolled');
+            navbar.classList.remove("scrolled");
         }
-    });
 
-    // Smooth scroll for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            
-            const targetId = this.getAttribute('href');
-            if (targetId === '#') return;
-            
-            const targetElement = document.querySelector(targetId);
-            if (targetElement) {
-                targetElement.scrollIntoView({
-                    behavior: 'smooth'
-                });
-            }
-        });
-    });
-
-    // Interactive mouse tracking for blob 1 (Optional subtle effect)
-    const blob1 = document.querySelector('.blob-1');
-    if (blob1) {
-        document.addEventListener('mousemove', (e) => {
-            const x = e.clientX / window.innerWidth;
-            const y = e.clientY / window.innerHeight;
-            
-            blob1.style.transform = `translate(${x * 50}px, ${y * 50}px)`;
-        });
     }
+
+    window.addEventListener("scroll", updateNavbar);
+
+    updateNavbar();
+
+
+    /* =========================
+       SCROLL REVEAL
+    ========================== */
+
+    const revealObserver =
+        new IntersectionObserver(
+            (entries, observer) => {
+
+                entries.forEach(entry => {
+
+                    if (entry.isIntersecting) {
+
+                        entry.target.classList.add("show");
+
+                        observer.unobserve(entry.target);
+
+                    }
+
+                });
+
+            },
+            {
+                threshold: 0.12
+            }
+        );
+
+
+    hiddenElements.forEach(element => {
+
+        revealObserver.observe(element);
+
+    });
+
+
+    /* =========================
+       NAVIGATION SMOOTH SCROLL
+    ========================== */
+
+    navLinks.forEach(link => {
+
+        link.addEventListener("click", event => {
+
+            const targetId =
+                link.getAttribute("href");
+
+            const target =
+                document.querySelector(targetId);
+
+            if (!target) {
+                return;
+            }
+
+            event.preventDefault();
+
+            const navbarHeight =
+                navbar.offsetHeight;
+
+            const targetPosition =
+                target.offsetTop - navbarHeight - 10;
+
+            window.scrollTo({
+                top: targetPosition,
+                behavior: "smooth"
+            });
+
+        });
+
+    });
+
+
+    /* =========================
+       ACTIVE NAVIGATION
+    ========================== */
+
+    const sectionObserver =
+        new IntersectionObserver(
+            entries => {
+
+                entries.forEach(entry => {
+
+                    if (entry.isIntersecting) {
+
+                        const currentId =
+                            entry.target.getAttribute("id");
+
+                        navLinks.forEach(link => {
+
+                            link.classList.remove("active");
+
+                            if (
+                                link.getAttribute("href") ===
+                                `#${currentId}`
+                            ) {
+
+                                link.classList.add("active");
+
+                            }
+
+                        });
+
+                    }
+
+                });
+
+            },
+            {
+                rootMargin:
+                    "-30% 0px -60% 0px",
+
+                threshold: 0
+            }
+        );
+
+
+    sections.forEach(section => {
+
+        sectionObserver.observe(section);
+
+    });
+
+
+    /* =========================
+       HERO INITIAL ANIMATION
+    ========================== */
+
+    const hero =
+        document.querySelector(".hero");
+
+
+    if (hero) {
+
+        setTimeout(() => {
+
+            hero.classList.add("show");
+
+        }, 200);
+
+    }
+
+
+    /* =========================
+       HERO PHOTO EFFECT
+    ========================== */
+
+    const profileImage =
+        document.querySelector(".hero-photo img");
+
+
+    if (profileImage) {
+
+        profileImage.addEventListener(
+            "mouseenter",
+            () => {
+
+                profileImage.style.transform =
+                    "scale(1.02)";
+
+            }
+        );
+
+
+        profileImage.addEventListener(
+            "mouseleave",
+            () => {
+
+                profileImage.style.transform =
+                    "scale(1)";
+
+            }
+        );
+
+    }
+
+
+    /* =========================
+       SKILL TAG INTERACTION
+    ========================== */
+
+    const tags =
+        document.querySelectorAll(".tag");
+
+
+    tags.forEach(tag => {
+
+        tag.addEventListener(
+            "mouseenter",
+            () => {
+
+                tag.style.cursor =
+                    "default";
+
+            }
+        );
+
+    });
+
+
+    /* =========================
+       CURRENT YEAR
+    ========================== */
+
+    const footerText =
+        document.querySelector("footer p");
+
+
+    if (footerText) {
+
+        const currentYear =
+            new Date().getFullYear();
+
+        footerText.textContent =
+            `© ${currentYear} 한재원. All rights reserved.`;
+
+    }
+
+
+    /* =========================
+       EXTERNAL LINKS
+    ========================== */
+
+    const externalLinks =
+        document.querySelectorAll(
+            'a[target="_blank"]'
+        );
+
+
+    externalLinks.forEach(link => {
+
+        link.setAttribute(
+            "rel",
+            "noopener noreferrer"
+        );
+
+    });
+
+
+    /* =========================
+       PAGE LOAD
+    ========================== */
+
+    document.body.classList.add("loaded");
+
 });
