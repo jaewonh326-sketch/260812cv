@@ -1,411 +1,276 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>한재원 | CV</title>
-
-    <meta name="description" content="한재원의 CV - IT 교육, 교육행정, AI, Web">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>한재원 | CV</title>
+<meta name="description" content="한재원의 CV - IT 교육, 교육행정, AI, Web">
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-<header class="header">
-    <div class="header-inner">
-        <a href="#top" class="logo">HJW</a>
+<div class="chalk-noise" aria-hidden="true"></div>
 
-        <nav>
-            <a href="#about">소개</a>
-            <a href="#experience">경력</a>
-            <a href="#education">학력</a>
-            <a href="#skills">역량</a>
-            <a href="#contact">연락처</a>
-        </nav>
-    </div>
+<header class="nav" id="top">
+  <a class="nav__mark" href="#top">HJW<span class="nav__cursor">_</span></a>
+  <nav class="nav__links">
+    <a href="#about"><span class="nav__num">01</span>소개</a>
+    <a href="#experience"><span class="nav__num">02</span>경력</a>
+    <a href="#education"><span class="nav__num">03</span>학력</a>
+    <a href="#skills"><span class="nav__num">04</span>역량</a>
+    <a href="#contact"><span class="nav__num">05</span>연락처</a>
+  </nav>
+  <button class="nav__toggle" id="navToggle" aria-label="메뉴 열기" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
 </header>
 
+<main>
 
-<main id="top">
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero__inner">
+      <p class="hero__eyebrow mono">CURRICULUM VITAE</p>
+      <h1 class="hero__name">
+        한재원
+      </h1>
+      <p class="hero__terminal mono">
+        <span class="prompt">$</span>
+        <span id="typedRole"></span><span class="caret" aria-hidden="true">_</span>
+      </p>
+      <p class="hero__statement">
+        기술을 배우는 것에서 멈추지 않고,<br>
+        직접 활용하고 가르치며 새로운 가능성을 만들어갑니다.
+      </p>
+      <ul class="hero__tags mono">
+        <li>IT Education</li>
+        <li>AI</li>
+        <li>Web Development</li>
+        <li>Education Administration</li>
+      </ul>
+    </div>
+    <div class="hero__timeline mono" aria-hidden="true">
+      <span>1993</span>
+      <span class="hero__timeline-line"></span>
+      <span>현재</span>
+    </div>
+    <a class="hero__scroll mono" href="#about">scroll<span class="hero__scroll-bar"></span></a>
+  </section>
 
-    <!-- HERO -->
-    <section class="hero">
-        <div class="hero-content">
-
-            <p class="eyebrow">CURRICULUM VITAE</p>
-
-            <h1>
-                한재원
-            </h1>
-
-            <p class="hero-role">
-                IT 교육 · 교육행정 · AI · Web
-            </p>
-
-            <div class="hero-line"></div>
-
-            <p class="hero-description">
-                기술을 배우는 것에서 멈추지 않고,<br>
-                직접 활용하고 가르치며 새로운 가능성을 만들어갑니다.
-            </p>
-
-            <div class="hero-meta">
-                <span>IT Education</span>
-                <span>AI</span>
-                <span>Web Development</span>
-                <span>Education Administration</span>
-            </div>
-
+  <!-- ABOUT -->
+  <section class="section section--light" id="about">
+    <div class="section__head">
+      <span class="section__num mono">01 / 05</span>
+      <h2 class="section__title">소개</h2>
+    </div>
+    <div class="about__grid">
+      <div class="about__lede reveal">
+        <p class="about__headline">
+          배우고, 직접 해보고,<br>
+          그것을 다시 사람과 나누는 일을 좋아합니다.
+        </p>
+        <p>
+          1993년부터 컴퓨터 교육 현장에서 활동해 왔으며 컴퓨터 활용 교육, 자격증 교육,
+          교육생 관리와 교육행정 업무를 경험했습니다.
+        </p>
+        <p>
+          컴퓨터공학 학사 학위를 취득하고 인공지능(AI) 융합지도 전문가 과정을 수료하면서
+          기존의 교육 경험에 새로운 기술을 연결하고 있습니다.
+        </p>
+        <p>
+          최근에는 정적 웹사이트와 동적 웹사이트의 구조를 직접 이해하고 구현하면서,
+          AI와 웹 기술을 교육에 활용하는 방법을 탐색하고 있습니다.
+        </p>
+      </div>
+      <div class="about__card reveal">
+        <div class="about__card-row">
+          <span class="mono about__card-key">FOCUS</span>
+          <span class="about__card-val">교육 × 기술</span>
         </div>
-
-        <div class="hero-number">
-            01
+        <div class="about__card-divider"></div>
+        <div class="about__card-row">
+          <span class="mono about__card-key">INTEREST</span>
+          <span class="about__card-val">AI · Web</span>
         </div>
-    </section>
-
-
-    <!-- ABOUT -->
-    <section id="about" class="section">
-        <div class="section-header">
-            <span class="section-number">01</span>
-            <h2>소개</h2>
+        <div class="about__card-divider"></div>
+        <div class="about__card-row">
+          <span class="mono about__card-key">APPROACH</span>
+          <span class="about__card-val">직접 배우고 직접 구현</span>
         </div>
+      </div>
+    </div>
+  </section>
 
-        <div class="about-layout">
-
-            <div class="about-main">
-                <p class="lead">
-                    배우고, 직접 해보고,<br>
-                    그것을 다시 사람과 나누는 일을 좋아합니다.
-                </p>
-
-                <p>
-                    1993년부터 컴퓨터 교육 현장에서 활동해 왔으며
-                    컴퓨터 활용 교육, 자격증 교육, 교육생 관리와
-                    교육행정 업무를 경험했습니다.
-                </p>
-
-                <p>
-                    컴퓨터공학 학사 학위를 취득하고
-                    인공지능(AI) 융합지도 전문가 과정을 수료하면서
-                    기존의 교육 경험에 새로운 기술을 연결하고 있습니다.
-                </p>
-
-                <p>
-                    최근에는 정적 웹사이트와 동적 웹사이트의 구조를
-                    직접 이해하고 구현하면서,
-                    AI와 웹 기술을 교육에 활용하는 방법을 탐색하고 있습니다.
-                </p>
-            </div>
-
-            <aside class="about-side">
-                <div class="info-item">
-                    <span>FOCUS</span>
-                    <strong>교육 × 기술</strong>
-                </div>
-
-                <div class="info-item">
-                    <span>INTEREST</span>
-                    <strong>AI · Web</strong>
-                </div>
-
-                <div class="info-item">
-                    <span>APPROACH</span>
-                    <strong>직접 배우고 직접 구현</strong>
-                </div>
-            </aside>
-
+  <!-- EXPERIENCE -->
+  <section class="section section--dark" id="experience">
+    <div class="section__head">
+      <span class="section__num mono">02 / 05</span>
+      <h2 class="section__title">경력</h2>
+    </div>
+    <ol class="timeline">
+      <li class="timeline__item reveal">
+        <div class="timeline__rail">
+          <span class="timeline__dot"></span>
         </div>
-    </section>
-
-
-    <!-- EXPERIENCE -->
-    <section id="experience" class="section section-soft">
-
-        <div class="section-header">
-            <span class="section-number">02</span>
-            <h2>경력</h2>
+        <div class="timeline__body">
+          <p class="timeline__date mono">1993 — 현재</p>
+          <h3 class="timeline__title">컴퓨터 교육 현장</h3>
+          <p class="timeline__role">IT 교육 · 컴퓨터 활용 교육</p>
+          <p class="timeline__desc">
+            컴퓨터 활용 교육과 자격증 교육을 중심으로 교육생의 학습을 지원하고
+            교육과정을 운영했습니다.
+          </p>
         </div>
-
-        <div class="timeline">
-
-            <article class="timeline-item">
-                <div class="timeline-date">1993 — 현재</div>
-
-                <div class="timeline-content">
-                    <h3>컴퓨터 교육 현장</h3>
-                    <p class="position">
-                        IT 교육 · 컴퓨터 활용 교육
-                    </p>
-
-                    <p>
-                        컴퓨터 활용 교육과 자격증 교육을 중심으로
-                        교육생의 학습을 지원하고 교육과정을 운영했습니다.
-                    </p>
-                </div>
-            </article>
-
-
-            <article class="timeline-item">
-                <div class="timeline-date">경력</div>
-
-                <div class="timeline-content">
-                    <h3>교육생 관리 및 교육행정</h3>
-                    <p class="position">
-                        교육 운영 · 행정 업무
-                    </p>
-
-                    <p>
-                        교육생 관리, 교육과정 운영,
-                        행정 업무 등 교육기관의 실무 전반을 경험했습니다.
-                    </p>
-                </div>
-            </article>
-
-
-            <article class="timeline-item">
-                <div class="timeline-date">현재</div>
-
-                <div class="timeline-content">
-                    <h3>AI · Web 학습 및 프로젝트</h3>
-                    <p class="position">
-                        AI 활용 · Web Development
-                    </p>
-
-                    <p>
-                        AI 기술과 웹 개발을 직접 학습하고,
-                        GitHub와 GitHub Pages를 활용하여
-                        실제 웹페이지를 제작하고 배포하는 과정을 경험하고 있습니다.
-                    </p>
-                </div>
-            </article>
-
+      </li>
+      <li class="timeline__item reveal">
+        <div class="timeline__rail">
+          <span class="timeline__dot"></span>
         </div>
-    </section>
-
-
-    <!-- EDUCATION -->
-    <section id="education" class="section">
-
-        <div class="section-header">
-            <span class="section-number">03</span>
-            <h2>학력 · 교육</h2>
+        <div class="timeline__body">
+          <p class="timeline__date mono">경력</p>
+          <h3 class="timeline__title">교육생 관리 및 교육행정</h3>
+          <p class="timeline__role">교육 운영 · 행정 업무</p>
+          <p class="timeline__desc">
+            교육생 관리, 교육과정 운영, 행정 업무 등 교육기관의 실무 전반을
+            경험했습니다.
+          </p>
         </div>
-
-        <div class="education-list">
-
-            <div class="education-item">
-                <span class="education-year">ACADEMIC</span>
-
-                <div>
-                    <h3>컴퓨터공학</h3>
-                    <p>컴퓨터공학 학사</p>
-                </div>
-            </div>
-
-
-            <div class="education-item">
-                <span class="education-year">PROGRAM</span>
-
-                <div>
-                    <h3>인공지능(AI) 융합지도 전문가</h3>
-                    <p>AI 융합지도 전문가 과정 수료</p>
-                </div>
-            </div>
-
-
-            <div class="education-item">
-                <span class="education-year">LEARNING</span>
-
-                <div>
-                    <h3>Web Development</h3>
-                    <p>HTML · CSS · JavaScript · GitHub Pages</p>
-                </div>
-            </div>
-
+      </li>
+      <li class="timeline__item reveal">
+        <div class="timeline__rail">
+          <span class="timeline__dot timeline__dot--active"></span>
         </div>
-    </section>
-
-
-    <!-- SKILLS -->
-    <section id="skills" class="section section-dark">
-
-        <div class="section-header light">
-            <span class="section-number">04</span>
-            <h2>역량</h2>
+        <div class="timeline__body">
+          <p class="timeline__date mono">현재</p>
+          <h3 class="timeline__title">AI · Web 학습 및 프로젝트</h3>
+          <p class="timeline__role">AI 활용 · Web Development</p>
+          <p class="timeline__desc">
+            AI 기술과 웹 개발을 직접 학습하고, GitHub와 GitHub Pages를 활용하여
+            실제 웹페이지를 제작하고 배포하는 과정을 경험하고 있습니다.
+          </p>
         </div>
+      </li>
+    </ol>
+  </section>
 
+  <!-- EDUCATION -->
+  <section class="section section--light" id="education">
+    <div class="section__head">
+      <span class="section__num mono">03 / 05</span>
+      <h2 class="section__title">학력 · 교육</h2>
+    </div>
+    <div class="edu__grid">
+      <div class="edu__card reveal">
+        <span class="mono edu__tag">ACADEMIC</span>
+        <h3>컴퓨터공학</h3>
+        <p>컴퓨터공학 학사</p>
+      </div>
+      <div class="edu__card reveal">
+        <span class="mono edu__tag">PROGRAM</span>
+        <h3>인공지능(AI) 융합지도 전문가</h3>
+        <p>AI 융합지도 전문가 과정 수료</p>
+      </div>
+      <div class="edu__card reveal">
+        <span class="mono edu__tag">LEARNING</span>
+        <h3>Web Development</h3>
+        <p>HTML · CSS · JavaScript · GitHub Pages</p>
+      </div>
+    </div>
+  </section>
 
-        <div class="skills-intro">
-            <p>
-                지금까지의 경험을 바탕으로
-                <strong>교육과 기술을 연결하는 것</strong>을
-                주요 역량으로 삼고 있습니다.
-            </p>
-        </div>
+  <!-- SKILLS -->
+  <section class="section section--dark" id="skills">
+    <div class="section__head">
+      <span class="section__num mono">04 / 05</span>
+      <h2 class="section__title">역량</h2>
+    </div>
+    <p class="section__intro reveal">
+      지금까지의 경험을 바탕으로 <strong>교육과 기술을 연결하는 것</strong>을
+      주요 역량으로 삼고 있습니다.
+    </p>
+    <div class="skills__grid">
+      <article class="skill__card reveal">
+        <span class="mono skill__index">01</span>
+        <h3>IT 교육</h3>
+        <p>컴퓨터 활용 교육과 자격증 교육을 진행하며 학습자의 수준과 목적에 맞춰
+          내용을 전달하고 실습 중심으로 학습을 지원할 수 있습니다.</p>
+        <ul class="mono skill__tags">
+          <li>Computer Education</li><li>Certificate Training</li><li>Digital Literacy</li>
+        </ul>
+      </article>
+      <article class="skill__card reveal">
+        <span class="mono skill__index">02</span>
+        <h3>교육행정</h3>
+        <p>교육생 관리와 교육과정 운영, 행정 업무 경험을 바탕으로 교육 현장의
+          실무 흐름을 이해하고 있습니다.</p>
+        <ul class="mono skill__tags">
+          <li>Education Management</li><li>Administration</li><li>Learner Management</li>
+        </ul>
+      </article>
+      <article class="skill__card reveal">
+        <span class="mono skill__index">03</span>
+        <h3>AI 활용</h3>
+        <p>인공지능 기술을 교육과 업무에 활용하는 방법을 탐색하고 있으며, AI를
+          단순한 도구가 아니라 새로운 학습과 문제해결 방식으로 바라봅니다.</p>
+        <ul class="mono skill__tags">
+          <li>Artificial Intelligence</li><li>AI Education</li><li>AI 활용</li>
+        </ul>
+      </article>
+      <article class="skill__card reveal">
+        <span class="mono skill__index">04</span>
+        <h3>Web Development</h3>
+        <p>HTML, CSS, JavaScript를 이용해 웹페이지를 직접 만들고 GitHub를 통해
+          관리하며 GitHub Pages로 배포하는 정적 웹 개발 과정을 경험하고 있습니다.</p>
+        <ul class="mono skill__tags">
+          <li>HTML</li><li>CSS</li><li>JavaScript</li><li>GitHub</li>
+        </ul>
+      </article>
+      <article class="skill__card reveal">
+        <span class="mono skill__index">05</span>
+        <h3>문제 해결</h3>
+        <p>새로운 기술을 접했을 때 단순히 설명을 읽는 데서 끝내지 않고 직접
+          실행하고 오류를 확인하면서 해결 방법을 찾아가는 학습 방식을 중요하게
+          생각합니다.</p>
+        <ul class="mono skill__tags">
+          <li>Problem Solving</li><li>Self Learning</li><li>Hands-on</li>
+        </ul>
+      </article>
+      <article class="skill__card reveal">
+        <span class="mono skill__index">06</span>
+        <h3>교육 × 기술 융합</h3>
+        <p>교육 현장에서 쌓아온 경험과 AI, Web 등의 기술을 연결하여 보다 효과적인
+          교육과 새로운 디지털 콘텐츠를 만들어가는 것을 목표로 합니다.</p>
+        <ul class="mono skill__tags">
+          <li>Education</li><li>Technology</li><li>Digital Transformation</li>
+        </ul>
+      </article>
+    </div>
+  </section>
 
-
-        <div class="skills-grid">
-
-            <article class="skill-card">
-                <span class="skill-index">01</span>
-
-                <h3>IT 교육</h3>
-
-                <p>
-                    컴퓨터 활용 교육과 자격증 교육을 진행하며
-                    학습자의 수준과 목적에 맞춰 내용을 전달하고
-                    실습 중심으로 학습을 지원할 수 있습니다.
-                </p>
-
-                <div class="skill-keywords">
-                    <span>Computer Education</span>
-                    <span>Certificate Training</span>
-                    <span>Digital Literacy</span>
-                </div>
-            </article>
-
-
-            <article class="skill-card">
-                <span class="skill-index">02</span>
-
-                <h3>교육행정</h3>
-
-                <p>
-                    교육생 관리와 교육과정 운영,
-                    행정 업무 경험을 바탕으로
-                    교육 현장의 실무 흐름을 이해하고 있습니다.
-                </p>
-
-                <div class="skill-keywords">
-                    <span>Education Management</span>
-                    <span>Administration</span>
-                    <span>Learner Management</span>
-                </div>
-            </article>
-
-
-            <article class="skill-card">
-                <span class="skill-index">03</span>
-
-                <h3>AI 활용</h3>
-
-                <p>
-                    인공지능 기술을 교육과 업무에 활용하는 방법을
-                    탐색하고 있으며, AI를 단순한 도구가 아니라
-                    새로운 학습과 문제해결 방식으로 바라봅니다.
-                </p>
-
-                <div class="skill-keywords">
-                    <span>Artificial Intelligence</span>
-                    <span>AI Education</span>
-                    <span>AI 활용</span>
-                </div>
-            </article>
-
-
-            <article class="skill-card">
-                <span class="skill-index">04</span>
-
-                <h3>Web Development</h3>
-
-                <p>
-                    HTML, CSS, JavaScript를 이용해 웹페이지를 직접 만들고
-                    GitHub를 통해 관리하며 GitHub Pages로 배포하는
-                    정적 웹 개발 과정을 경험하고 있습니다.
-                </p>
-
-                <div class="skill-keywords">
-                    <span>HTML</span>
-                    <span>CSS</span>
-                    <span>JavaScript</span>
-                    <span>GitHub</span>
-                </div>
-            </article>
-
-
-            <article class="skill-card">
-                <span class="skill-index">05</span>
-
-                <h3>문제 해결</h3>
-
-                <p>
-                    새로운 기술을 접했을 때 단순히 설명을 읽는 데서
-                    끝내지 않고 직접 실행하고 오류를 확인하면서
-                    해결 방법을 찾아가는 학습 방식을 중요하게 생각합니다.
-                </p>
-
-                <div class="skill-keywords">
-                    <span>Problem Solving</span>
-                    <span>Self Learning</span>
-                    <span>Hands-on</span>
-                </div>
-            </article>
-
-
-            <article class="skill-card">
-                <span class="skill-index">06</span>
-
-                <h3>교육 × 기술 융합</h3>
-
-                <p>
-                    교육 현장에서 쌓아온 경험과 AI, Web 등의 기술을
-                    연결하여 보다 효과적인 교육과 새로운 디지털
-                    콘텐츠를 만들어가는 것을 목표로 합니다.
-                </p>
-
-                <div class="skill-keywords">
-                    <span>Education</span>
-                    <span>Technology</span>
-                    <span>Digital Transformation</span>
-                </div>
-            </article>
-
-        </div>
-
-    </section>
-
-
-    <!-- CONTACT -->
-    <section id="contact" class="section contact">
-
-        <div class="section-header">
-            <span class="section-number">05</span>
-            <h2>연락처</h2>
-        </div>
-
-        <div class="contact-box">
-
-            <p>
-                교육과 기술, 그리고 새로운 가능성에 대해
-                이야기하고 싶습니다.
-            </p>
-
-            <div class="contact-line"></div>
-
-            <p class="contact-note">
-                HJW · IT Education · AI · Web
-            </p>
-
-        </div>
-
-    </section>
+  <!-- CONTACT -->
+  <section class="section section--light contact" id="contact">
+    <div class="section__head">
+      <span class="section__num mono">05 / 05</span>
+      <h2 class="section__title">연락처</h2>
+    </div>
+    <p class="contact__statement reveal">
+      교육과 기술, 그리고 새로운 가능성에 대해<br>이야기하고 싶습니다.
+    </p>
+    <a class="contact__cta mono reveal" href="mailto:contact@example.com">
+      contact@example.com<span class="contact__cta-arrow">→</span>
+    </a>
+  </section>
 
 </main>
 
-
-<footer>
-    <p>© 2026 HJW. All rights reserved.</p>
+<footer class="footer">
+  <p class="mono">HJW · IT Education · AI · Web</p>
+  <p class="mono">© 2026 HJW. All rights reserved.</p>
 </footer>
 
-
 <script src="script.js"></script>
-
 </body>
 </html>

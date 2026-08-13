@@ -1,81 +1,96 @@
+// ============================================================
+// 한재원 CV — interactions
+// 1) 터미널 타이핑 효과 (hero 서브타이틀)
+// 2) 스크롤 reveal (IntersectionObserver)
+// 3) 모바일 내비게이션 토글
+// ============================================================
+
 document.addEventListener("DOMContentLoaded", () => {
+  const prefersReducedMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)"
+  ).matches;
 
-    /* 헤더 스크롤 효과 */
-    const header = document.querySelector(".header");
+  /* ---------- 1) 터미널 타이핑 효과 ---------- */
+  const typedEl = document.getElementById("typedRole");
+  const roles = ["IT 교육", "교육행정", "AI", "Web Development"];
 
-    window.addEventListener("scroll", () => {
-        if (window.scrollY > 30) {
-            header.classList.add("scrolled");
+  if (typedEl) {
+    if (prefersReducedMotion) {
+      typedEl.textContent = roles.join(" · ");
+    } else {
+      let roleIndex = 0;
+      let charIndex = 0;
+      let deleting = false;
+
+      const TYPE_SPEED = 65;
+      const DELETE_SPEED = 35;
+      const HOLD_TIME = 1400;
+
+      function tick() {
+        const current = roles[roleIndex];
+
+        if (!deleting) {
+          charIndex++;
+          typedEl.textContent = current.slice(0, charIndex);
+          if (charIndex === current.length) {
+            deleting = true;
+            setTimeout(tick, HOLD_TIME);
+            return;
+          }
+          setTimeout(tick, TYPE_SPEED);
         } else {
-            header.classList.remove("scrolled");
+          charIndex--;
+          typedEl.textContent = current.slice(0, charIndex);
+          if (charIndex === 0) {
+            deleting = false;
+            roleIndex = (roleIndex + 1) % roles.length;
+            setTimeout(tick, TYPE_SPEED * 3);
+            return;
+          }
+          setTimeout(tick, DELETE_SPEED);
         }
-    });
+      }
+      tick();
+    }
+  }
 
+  /* ---------- 2) 스크롤 reveal ---------- */
+  const revealEls = document.querySelectorAll(".reveal");
 
-    /* 스크롤 등장 효과 */
-    const elements = document.querySelectorAll(
-        ".section-header, .about-main, .about-side, " +
-        ".timeline-item, .education-item, .skill-card, .contact-box"
-    );
-
-    elements.forEach(element => {
-        element.classList.add("reveal");
-    });
-
-
+  if (prefersReducedMotion) {
+    revealEls.forEach((el) => el.classList.add("is-visible"));
+  } else if ("IntersectionObserver" in window) {
     const observer = new IntersectionObserver(
-        (entries, observer) => {
-
-            entries.forEach(entry => {
-
-                if (entry.isIntersecting) {
-                    entry.target.classList.add("visible");
-                    observer.unobserve(entry.target);
-
-                }
-
-            });
-
-        },
-        {
-            threshold: 0.12
-        }
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.15, rootMargin: "0px 0px -60px 0px" }
     );
+    revealEls.forEach((el) => observer.observe(el));
+  } else {
+    revealEls.forEach((el) => el.classList.add("is-visible"));
+  }
 
+  /* ---------- 3) 모바일 내비게이션 토글 ---------- */
+  const nav = document.querySelector(".nav");
+  const toggle = document.getElementById("navToggle");
 
-    elements.forEach(element => {
-        observer.observe(element);
+  if (nav && toggle) {
+    toggle.addEventListener("click", () => {
+      const isOpen = nav.classList.toggle("is-open");
+      toggle.setAttribute("aria-expanded", String(isOpen));
     });
 
-
-    /* 네비게이션 현재 위치 표시 */
-    const sections = document.querySelectorAll("main section[id]");
-    const navLinks = document.querySelectorAll("nav a");
-
-    window.addEventListener("scroll", () => {
-
-        let current = "";
-
-        sections.forEach(section => {
-
-            const sectionTop = section.offsetTop - 150;
-
-            if (window.scrollY >= sectionTop) {
-                current = section.getAttribute("id");
-            }
-
-        });
-
-        navLinks.forEach(link => {
-
-            link.style.fontWeight = "400";
-
-            if (link.getAttribute("href") === "#" + current) {
-                link.style.fontWeight = "600";
-            }
-
-        });
-
+    nav.querySelectorAll(".nav__links a").forEach((link) => {
+      link.addEventListener("click", () => {
+        nav.classList.remove("is-open");
+        toggle.setAttribute("aria-expanded", "false");
+      });
     });
-
+  }
 });
